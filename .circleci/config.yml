@@ -52,13 +52,13 @@ jobs:
              npm run test
 
  test-backend:
-     docker:
-       - image: circleci/node:13.8.0
-     steps:
-       - checkout
-       - restore_cache:
-           keys: [backend-build]
-        - run:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys: [backend-build]
+      - run:
           name: Run backend test
           command: |
              cd backend
