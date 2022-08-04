@@ -116,13 +116,12 @@ jobs:
         channel: C03SB51EQUU
         event: fail
         template: basic_fail_1
-
   deploy-infrastructure:
     docker:
        - image: amazon/aws-cli
     steps:
-      - checkout
-      - run:
+     - checkout
+     - run:
         name: Ensure back-end infrastructure exists
         command: |
           aws cloudformation deploy \
@@ -130,7 +129,7 @@ jobs:
             --tags project=udapeople \
             --stack-name "udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
             --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"
-      - run:
+     - run:
         name: Ensure front-end infrastructure exist
         command: |
           aws cloudformation deploy \
@@ -138,19 +137,20 @@ jobs:
             --tags project=udapeople \
             --stack-name "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}" \
             --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"
-      - run:
+     - run:
         name: Add back-end ip to ansible inventory
         command: |
           aws ec2 describe-instances \
              --query 'Reservations[*].Instances[*].PublicIpAddress' \
              --filters "Name=tag:project,Values=udapeople" \
              --output text >> .circleci/ansible/inventory.txt
-      - persist_to_workspace:
-        root: ~/
-        paths:
-          - project/.circleci/ansible/inventory.txt
+     - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/.circleci/ansible/inventory.txt
     - destroy-environment
       when: on_fail
+
 workflows:
   default:
     jobs:
