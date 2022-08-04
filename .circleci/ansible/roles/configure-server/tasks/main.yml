@@ -20,19 +20,21 @@
     update_cache: yes
 
 - name: "Install nodejs"
+  become: true
   apt:
     update_cache: yes
     name: nodejs
     state: present
 
 - name: "Install NPM-distributed command-line tools"
+  become: true
   npm:
     global: yes
-    name: "{{ item }}"
-  with_items:
-    - firebase-tools
+    name: ["npm"]
+    update_cache: yes
 
 - name: "Install node pm2"
+  become: true
   npm:
     global: yes
     name: pm2
