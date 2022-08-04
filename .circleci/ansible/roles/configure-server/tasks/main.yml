@@ -19,8 +19,8 @@
 - name: "Install NPM-distributed command-line tools"
   become: true
   npm:
-    global: yes
     name: ["npm"]
+    state: latest
     update_cache: yes
 
 - name: "Install node pm2"
