@@ -19,12 +19,6 @@
     repo: deb https://deb.nodesource.com/node_13.x bionic main
     update_cache: yes
 
-- name: Fetch python3-apt package
-  ansible.builtin.apt:
-    name: python3-apt
-    state: present
-    update_cache: yes
-
 - name: "Install nodejs"
   apt:
     update_cache: yes
