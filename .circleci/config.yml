@@ -149,7 +149,7 @@ jobs:
           paths:
             - project/.circleci/ansible/inventory.txt
      - destroy-environment
-      when: on_fail
+       when: on_fail
 
 workflows:
   default:
