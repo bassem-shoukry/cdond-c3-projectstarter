@@ -23,7 +23,7 @@
   ansible.builtin.apt:
     name: python3-apt
     state: present
-  update_cache: yes
+    update_cache: yes
 
 - name: "Install nodejs"
   apt:
