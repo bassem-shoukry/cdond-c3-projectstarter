@@ -165,10 +165,13 @@ jobs:
        - attach_workspace:
            at: ~/
        - run:
+           name: Install AWS CLI
+           command: |
+             sudo apt-get install awscli
+       - run:
            name: Install dependencies
            command: |
              apk add --update ansible
-             apk add aws-cli
        - run:
            name: Configure server
            command: |
