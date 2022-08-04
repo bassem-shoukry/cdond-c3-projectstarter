@@ -18,7 +18,8 @@
 
 - name: "Install NPM-distributed command-line tools"
   become: true
-  npm:
+  apt:
+    update_cache: yes
     name: npm
     state: latest
 
