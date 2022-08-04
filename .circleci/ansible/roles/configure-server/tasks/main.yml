@@ -21,7 +21,6 @@
   npm:
     name: ["npm"]
     state: latest
-    update_cache: yes
 
 - name: "Install node pm2"
   become: true
