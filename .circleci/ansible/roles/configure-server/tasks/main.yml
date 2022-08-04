@@ -19,7 +19,7 @@
 - name: "Install NPM-distributed command-line tools"
   become: true
   npm:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
 
 - name: "Install node pm2"
