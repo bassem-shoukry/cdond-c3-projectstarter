@@ -204,15 +204,14 @@ jobs:
         - destroy-environment
   deploy-frontend:
       docker:
-        - image: amazon/aws-cli
+        - image: circleci/node:13.8.0
       steps:
         - checkout
         - run:
-            name: Install dependencies
-            command: |
-              apt update
-              curl -sL https://deb.nodesource.com/setup_13.x | sudo bash -
-              apt install -y nodejs
+          name: Install AWS CLI
+          command: |
+             apt-get update
+             apt -y install awscli
         - run:
             name: Get backend url
             command: |
