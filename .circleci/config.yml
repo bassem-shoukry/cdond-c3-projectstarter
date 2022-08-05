@@ -183,6 +183,10 @@ jobs:
       steps:
         - checkout
         - run:
+            name: Install AWS CLI
+            command: |
+               python -m pip install awscli
+        - run:
             name: Run migrations
             command: |
                cd backend
@@ -253,5 +257,5 @@ workflows:
           requires: [deploy-infrastructure]
       - run-migrations:
           requires: [configure-infrastructure]
-      - deploy-frontend:
-          requires: [run-migrations]
+#      - deploy-frontend:
+#          requires: [run-migrations]
