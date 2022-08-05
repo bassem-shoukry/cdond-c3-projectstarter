@@ -208,10 +208,10 @@ jobs:
       steps:
         - checkout
         - run:
-          name: Install AWS CLI
-          command: |
-             apt-get update
-             apt -y install awscli
+            name: Install AWS CLI
+            command: |
+               apt-get update
+               apt -y install awscli
         - run:
             name: Get backend url
             command: |
