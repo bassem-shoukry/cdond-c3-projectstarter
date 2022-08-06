@@ -233,6 +233,41 @@ jobs:
               tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
               aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
         - destroy-environment
+  deploy-backend:
+      docker:
+         - image: circleci/node:13.8.0
+      steps:
+        - checkout
+        - add_ssh_keys:
+            fingerprints: ["80:93:59:44:39:72:59:b5:3d:17:2f:df:d9:17:32:76"]
+        - attach_workspace:
+            at: ~/
+        - run:
+            name: Install AWS CLI
+            command: |
+               apt-get update
+               apt -y install awscli
+        - run:
+            name: Install ansible
+            command: |
+               apk add --update ansible
+        - run:
+            name: Install tar utility
+            command: |
+                yum install -y tar gzip
+        - run:
+            name: Deploy backend
+            command: |
+              cd backend
+              npm i
+              npm run build
+              cd ..
+              tar -C backend -czvf artifact.tar.gz .
+              cd .circleci/ansible
+              echo "Contents  of the inventory.txt file is -------"
+              cat inventory.txt
+              ansible-playbook -i inventory.txt deploy-backend.yml
+        - destroy-environment
 workflows:
   default:
     jobs:
@@ -260,4 +295,6 @@ workflows:
       - run-migrations:
           requires: [configure-infrastructure]
       - deploy-frontend:
+          requires: [run-migrations]
+      - deploy-backend:
           requires: [run-migrations]
