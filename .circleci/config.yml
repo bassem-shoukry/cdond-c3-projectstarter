@@ -236,6 +236,7 @@ jobs:
   deploy-backend:
       docker:
          - image: circleci/node:13.8.0
+           user: root
       steps:
         - checkout
         - add_ssh_keys:
