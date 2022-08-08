@@ -248,12 +248,20 @@ jobs:
             command: |
                apt-get update
                apt -y install awscli
+        -run:
+            name: install python 3.7
+            command: |
+               sudo add-apt-repository --yes ppa:deadsnakes/ppa
+               sudo apt-get update
+               sudo apt-get install python3.7
+               wget https://bootstrap.pypa.io/get-pip.py
+               sudo python3.7 get-pip.py
+               sudo python3.7 -m pip install --upgrade pip setuptools wheel
+               sudo python3.7 -m pip install pipenv
+
         - run:
             name: Install ansible
             command: |
-               curl -O https://bootstrap.pypa.io/pip/3.5/get-pip.py
-               python3 get-pip.py --user
-               python3 -m pip -V
                python3 -m pip install --user ansible
                ansible --version
         - run:
