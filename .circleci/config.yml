@@ -249,13 +249,10 @@ jobs:
                apt-get update
                apt -y install awscli
         - run:
-            name: install python 3.7
+            name: install python
             command: |
-               apt install python3.7
-               wget https://bootstrap.pypa.io/get-pip.py
-               python3.7 get-pip.py
-               python3.7 -m pip install --upgrade pip setuptools wheel
-               python3.7 -m pip install pipenv
+              apt-get install python -y
+              apt install python3-pip
         - run:
             name: Install ansible
             command: |
