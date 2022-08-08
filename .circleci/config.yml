@@ -260,7 +260,7 @@ jobs:
         - run:
             name: Install tar utility
             command: |
-                yum install -y tar gzip
+               apt-get install tar gzip -y
         - run:
             name: Deploy backend
             command: |
