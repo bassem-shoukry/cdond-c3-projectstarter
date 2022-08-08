@@ -242,7 +242,7 @@ jobs:
         - add_ssh_keys:
             fingerprints: ["80:93:59:44:39:72:59:b5:3d:17:2f:df:d9:17:32:76"]
         - attach_workspace:
-            at: /tmp/.circleci/ansible
+            at: ~/
         - run:
             name: Install AWS CLI
             command: |
@@ -268,12 +268,11 @@ jobs:
               npm i
               npm run build
               cd ..
-              tar -C backend -czvf artifact.tar.gz .
+              tar -C backend -czvf artifact.tar.gz
               cd .circleci/ansible
               echo "Contents  of the inventory.txt file is -------"
               cat inventory.txt
               ansible-playbook -i inventory.txt deploy-backend.yml
-        - destroy-environment
 workflows:
   default:
     jobs:
