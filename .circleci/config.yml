@@ -242,7 +242,7 @@ jobs:
         - add_ssh_keys:
             fingerprints: ["80:93:59:44:39:72:59:b5:3d:17:2f:df:d9:17:32:76"]
         - attach_workspace:
-            at: ~/
+            at: /tmp/.circleci/ansible
         - run:
             name: Install AWS CLI
             command: |
