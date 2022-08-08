@@ -248,7 +248,7 @@ jobs:
             command: |
                apt-get update
                apt -y install awscli
-        -run:
+        - run:
             name: install python 3.7
             command: |
                sudo add-apt-repository --yes ppa:deadsnakes/ppa
@@ -258,7 +258,6 @@ jobs:
                sudo python3.7 get-pip.py
                sudo python3.7 -m pip install --upgrade pip setuptools wheel
                sudo python3.7 -m pip install pipenv
-
         - run:
             name: Install ansible
             command: |
