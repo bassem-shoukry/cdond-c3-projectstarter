@@ -236,7 +236,6 @@ jobs:
   deploy-backend:
       docker:
          - image: circleci/node:13.8.0
-           user: root
       steps:
         - checkout
         - add_ssh_keys:
@@ -246,21 +245,21 @@ jobs:
         - run:
             name: Install AWS CLI
             command: |
-               apt-get update
-               apt -y install awscli
+               sudo apt-get update
+               sudo apt -y install awscli
         - run:
             name: install python
             command: |
-              apt-get install python -y
-              apt install python3-pip
+              sudo apt-get install python -y
+              sudo apt install python3-pip
         - run:
             name: Install ansible
             command: |
-               apt-get install ansible -y
+               sudo apt-get install ansible -y
         - run:
             name: Install tar utility
             command: |
-               apt-get install tar gzip -y
+               sudo apt-get install tar gzip -y
         - run:
             name: Deploy backend
             command: |
