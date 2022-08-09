@@ -1,7 +1,7 @@
 - name: "extract the zipped artifact"
   become: true
   unarchive:
-    src: /etc/artifact.tar.gz
+    src: artifact.tar.gz
     dist: /home/ubuntu/
 - name: "start the app"
   become: true
