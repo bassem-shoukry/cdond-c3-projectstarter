@@ -1,6 +1,6 @@
 - name: "extract the zipped artifact"
   unarchive:
-    src: artifact.tar.gz
+    src: ~/project/artifact.tar.gz
     dist: /home/ubuntu/
 - name: "start the app"
   shell: |
