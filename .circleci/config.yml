@@ -272,7 +272,8 @@ jobs:
               cd ..
               tar -C backend -czvf artifact.tar.gz ./
               chmod 644 artifact.tar.gz
-              cp artifact.tar.gz .circleci/ansible/roles/deploy/files/
+              echo "copy artifact.tar.gz to .circleci/ansible/roles/deploy/files"
+              cp artifact.tar.gz .circleci/ansible/roles/deploy/files
               cd .circleci/ansible
               echo "Contents  of the inventory.txt file is -------"
               cat inventory.txt
