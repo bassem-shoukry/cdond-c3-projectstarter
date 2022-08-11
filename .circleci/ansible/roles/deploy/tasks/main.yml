@@ -1,9 +1,9 @@
 - name: "extract the zipped artifact"
   become: true
   unarchive:
-    src: "artifact.tar.gz"
-    dest: "/home/ubuntu/"
-    remote_src: yes
+    src: artifact.tar.gz
+    dest: home/ubuntu/
+
 - name: "start the app"
   become: true
   shell: |
