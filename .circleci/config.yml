@@ -270,7 +270,7 @@ jobs:
               npm i
               npm run build
               cd ..
-              tar -C backend -czvf artifact.tar.gz ./
+              tar -C backend -czvf artifact.tar.gz .
               chmod 644 artifact.tar.gz
               echo "copy artifact.tar.gz to .circleci/ansible/roles/deploy/files"
               cp artifact.tar.gz .circleci/ansible/roles/deploy/files
