@@ -177,7 +177,6 @@ jobs:
        - run:
            name: Configure server
            command: |
-             export ANSIBLE_HOST_KEY_CHECKING=False
              ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/configure-server.yml
        - destroy-environment
   run-migrations:
@@ -267,6 +266,7 @@ jobs:
         - run:
             name: Deploy backend
             command: |
+              export ANSIBLE_HOST_KEY_CHECKING=False
               cd backend
               npm i
               npm run build
