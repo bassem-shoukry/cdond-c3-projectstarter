@@ -3,7 +3,6 @@
   unarchive:
     src: artifact.tar.gz
     dest: home/ubuntu/
-    remote_src: yes
 
 - name: "start the app"
   become: true
