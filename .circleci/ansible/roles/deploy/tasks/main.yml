@@ -1,3 +1,9 @@
+- name: Creates directory
+  become: true
+  file:
+    path: /home/ubuntu/backend
+    state: directory
+    mode: 0775
 - name: "extract the zipped artifact"
   become: true
   unarchive:
