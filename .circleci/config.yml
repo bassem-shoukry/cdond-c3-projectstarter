@@ -222,6 +222,9 @@ jobs:
                --query 'Reservations[*].Instances[*].PublicIpAddress' \
                --filters "Name=tag:project,Values=udapeople" \
                --output text)
+
+              curl https://kvdb.io/92eXWMYPWa1TzEmyjvST8y/backend_id_${CIRCLE_WORKFLOW_ID:0:7}  -d ${BACKEND_IP}
+
               export API_URL="http://${BACKEND_IP}:3030"
               echo "${API_URL}"
               echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
@@ -293,10 +296,7 @@ jobs:
         - run:
             name: Get backend url
             command: |
-              export BACKEND_IP =$(aws ec2 describe-instances \
-                             --query 'Reservations[*].Instances[*].PublicIpAddress' \
-                             --filters "Name=tag:project,Values=udapeople" \
-                             --output text)
+              export BACKEND_IP=$(curl --insecure  https://kvdb.io/9GE4jRtKznmVKRfvdBABBe/backend_id_${CIRCLE_WORKFLOW_ID:0:7})
               export API_URL="http://${BACKEND_IP}:3030"
               echo "${API_URL}"
         - run:
