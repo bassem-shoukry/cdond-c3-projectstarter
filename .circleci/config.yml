@@ -201,7 +201,7 @@ jobs:
             command: |
               if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
                 then
-                    curl https://kvdb.io/92eXWMYPWa1TzEmyjvST8y/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+                    curl --insecure https://kvdb.io/92eXWMYPWa1TzEmyjvST8y/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '1'
                 fi
         - destroy-environment
   deploy-frontend:
@@ -223,7 +223,7 @@ jobs:
                --filters "Name=tag:project,Values=udapeople" \
                --output text)
 
-              curl https://kvdb.io/92eXWMYPWa1TzEmyjvST8y/backend_id_${CIRCLE_WORKFLOW_ID:0:7} --insecure -d ${BACKEND_IP}
+              curl --insecure https://kvdb.io/92eXWMYPWa1TzEmyjvST8y/backend_id_${CIRCLE_WORKFLOW_ID:0:7} -d ${BACKEND_IP}
 
               export API_URL="http://${BACKEND_IP}:3030"
               echo "${API_URL}"
