@@ -23,7 +23,7 @@ commands:
             SUCCESS=$(curl --insecure  https://kvdb.io/92eXWMYPWa1TzEmyjvST8y/migration_${CIRCLE_WORKFLOW_ID:0:7})
             if(( $SUCCESS==1 ));
             then
-              cd ~/project/backend
+              cd /home/ubuntu/backend
               npm install
               npm run migration:revert
               exit 1
