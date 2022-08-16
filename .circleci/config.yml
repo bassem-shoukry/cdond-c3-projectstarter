@@ -348,13 +348,9 @@ jobs:
         - revert-migrations
   cloudfront-update:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: amazon/aws-cli
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: |
-            python -m pip install awscli
       - run:
           name: Update cloudfront distribution
           command: |
@@ -366,13 +362,9 @@ jobs:
       - destroy-environment
   cleanup:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: amazon/aws-cli
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: |
-            python -m pip install awscli
       - run:
           name: Get old stack workflow id
           command: |
