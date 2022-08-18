@@ -381,8 +381,10 @@ jobs:
       - image: python:3.7-alpine3.11
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - .
       - run:
           name: Install dependencies
           command: |
