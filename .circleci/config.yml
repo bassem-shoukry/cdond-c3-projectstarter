@@ -415,6 +415,8 @@ jobs:
             else
               echo "------------------------Cannot Cleanup------------------------"
             fi
+      - destroy-environment
+      - revert-migrations
 workflows:
   default:
     jobs:
